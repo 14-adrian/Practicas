@@ -32,15 +32,18 @@ public class Personaje {
     {
         Random r = new Random();
         double acierto = 1 + (99 + 1) * r.nextDouble();
+        int daño = 0;
         if(this.precision > acierto)
         {
-            int daño = eSalud - this.ataque/eDefensa;
+            daño = eSalud - this.ataque/eDefensa;
         }
         else
         {
             System.out.println("Fallo");
         }
+        return daño;
     }
+    public void 
     private String nombre = "";
     private int ataque = 0;
     private int salud = 0;
