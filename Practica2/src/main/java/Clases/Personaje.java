@@ -7,6 +7,7 @@ package Clases;
 import java.util.Random;
 public class Personaje {
     
+    
     public void setNombre(String name)
     {
         this.nombre = name;
@@ -28,7 +29,7 @@ public class Personaje {
     {
         this.precision = acc;
     }
-    public void atacar(int eSalud, int eDefensa)
+    public int atacar(int eSalud, int eDefensa)
     {
         Random r = new Random();
         double acierto = 1 + (99 + 1) * r.nextDouble();
@@ -43,7 +44,10 @@ public class Personaje {
         }
         return daño;
     }
-    public void 
+    public void recibeDaño(int daño)
+    {
+        this.salud -= daño;
+    }
     private String nombre = "";
     private int ataque = 0;
     private int salud = 0;
