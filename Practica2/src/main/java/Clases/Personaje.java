@@ -4,7 +4,7 @@ package Clases;
  *
  * @author Leonidas Adrian Mendoza Flores
  */
-import java.util.Random;
+import java.util.Random; //Metodo Random
 
 public class Personaje {
     
@@ -53,43 +53,42 @@ public class Personaje {
         this.setPrecision(90);
     }
     */
-    public void setNombre(String name)
+    public void setNombre(String name) //Asignar nombre
     {
         this.nombre = name;
     }
-    public void setSalud(int hp)
+    public void setSalud(int hp) //Asignar salud
     {
         this.salud = hp;
     }
-    public void setAtaque(int atk)
+    public void setAtaque(int atk) //Asignar ataque
     {
         this.ataque = atk;
     }
-    public void setDefensa(int def)
+    public void setDefensa(int def) //Asignar defensa
     {
         this.defensa = def;
     }
-    //Tiene que ser del 1 al 100
-    public void setPrecision(double acc)
+    public void setPrecision(double acc) //Asignar precision o tasa de acierto
     {
         this.precision = acc;
     }
-    public int getSalud()
+    public int getSalud() //Obtener salud para que el metodo ataque
     {
         return salud;
     }
-    public int getDefensa()
+    public int getDefensa() //Obtener defensa para el metodo ataque
     {
         return defensa;
     }
-    public int atacar(int saludRival, int defensaRival)
+    public int atacar(int saludRival, int defensaRival) //Metodo atacar, necesita la defensa y vida del rival
     {
-        Random r = new Random();
-        double acierto = 1 + (99 + 1) * r.nextDouble();
-        int daño = 0;
+        Random r = new Random(); //Utiliza el metodo random
+        double acierto = 1 + (99 + 1) * r.nextDouble(); //Obtener un numero aleatorio para el funcionamiento de la taza de acierto
+        int daño = 0; //Variable que devuelve el metodo para el funcionamiento de la defensa
         if(this.precision > acierto)
         {
-            daño = saludRival - this.ataque/defensaRival;
+            daño = saludRival - this.ataque/defensaRival; //Funcionamiento del ataque
         }
         else
         {
@@ -97,19 +96,19 @@ public class Personaje {
         }
         return daño;
     }
-    public void recibeDaño(int daño)
+    public void recibeDaño(int daño) //Metodo para controlar la vida del personaje y recibir ataques, necesita el metodo "atacar"
     {
         this.salud -= daño;
         if(this.salud < 0)
         {
-            System.out.println(this.nombre +" fue derrotado");
+            System.out.println(this.nombre +" fue derrotado"); //Envia mensaje si el personaje fue derrotado
             this.salud = 0;
         }
     }
-    private String nombre = "";
-    private int ataque = 1;
-    private int salud = 1;
-    private int defensa = 1;
-    private double precision = 1;
+    private String nombre = ""; //Atributo nombre del personaje
+    private int ataque = 1; //Atributo ataque del personaje
+    private int salud = 1; //Atributo salud del personaje
+    private int defensa = 1; //Atributo defensa del personaje
+    private double precision = 1; //Atributo tasa de aciertos del personaje
     
 }
