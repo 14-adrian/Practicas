@@ -8,51 +8,14 @@ import java.util.Random; //Metodo Random
 
 public class Personaje {
     
-   
-    /**
-    -----Prueba Guerrero-----
-    public Personaje() 
+    public Personaje(String name, int salud, int defensa, int ataque, double precision)
     {
-        this.setNombre("Guerrero");
-        this.setAtaque(30);
-        this.setSalud(90);
-        this.setDefensa(40);
-        this.setPrecision(70);
+        this.nombre = name;
+        this.salud  = salud;
+        this.ataque = ataque;
+        this.defensa = defensa;
+        this.precision = precision;
     }
-    */
-    /**
-    ------Prueba Caballeria-----
-    public Personaje() 
-    {
-        this.setNombre("Caballeria");
-        this.setAtaque(40);
-        this.setSalud(80);
-        this.setDefensa(30);
-        this.setPrecision(80);
-    }
-    */
-    /**
-     ------Prueba Mago-------
-    public Personaje() 
-    {
-        this.setNombre("Mago");
-        this.setAtaque(75);
-        this.setSalud(30);
-        this.setDefensa(20);
-        this.setPrecision(60);
-    }
-    */
-    /**
-    ------Prueba Computadora------
-    public Personaje()
-    {
-        this.setNombre("Computadora");
-        this.setAtaque(50);
-        this.setSalud(150);
-        this.setDefensa(75);
-        this.setPrecision(90);
-    }
-    */
     public void setNombre(String name) //Asignar nombre
     {
         this.nombre = name;
@@ -77,9 +40,17 @@ public class Personaje {
     {
         return salud;
     }
+    public int getAtaque() //Obtener defensa para el metodo ataque
+    {
+        return ataque;
+    }
     public int getDefensa() //Obtener defensa para el metodo ataque
     {
         return defensa;
+    }
+    public double getPrecision() //Asignar precision o tasa de acierto
+    {
+        return precision;
     }
     public int atacar(int saludRival, int defensaRival) //Metodo atacar, necesita la defensa y vida del rival
     {
@@ -105,10 +76,10 @@ public class Personaje {
             this.salud = 0;
         }
     }
-    private String nombre = ""; //Atributo nombre del personaje
-    private int ataque = 1; //Atributo ataque del personaje
-    private int salud = 1; //Atributo salud del personaje
-    private int defensa = 1; //Atributo defensa del personaje
-    private double precision = 1; //Atributo tasa de aciertos del personaje
+    private String nombre; //Atributo nombre del personaje
+    private int ataque; //Atributo ataque del personaje
+    private int salud; //Atributo salud del personaje
+    private int defensa; //Atributo defensa del personaje
+    private double precision; //Atributo tasa de aciertos del personaje
     
 }
