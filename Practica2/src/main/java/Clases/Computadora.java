@@ -9,25 +9,19 @@ import java.util.Random;
  */
 public class Computadora extends Personaje{
     public Computadora(){
-        super("Computadora", 50, 150, 75, 90);
+        super("Computadora", 50, 150, 45, 60);
     }
-    public int superAtaque(int saludRival, int defensaRival){
-        Random r = new Random(); //Utiliza el metodo random
-        double acierto = 1 + (99 + 1) * r.nextDouble(); //Obtener un numero aleatorio para el funcionamiento de la taza de acierto
-        int daño = 0; //Variable que devuelve el metodo para el funcionamiento de la defensa
-        System.out.println("!!!Preparate!!!");
-        if(super.getPrecision() > acierto)
-        {
-            daño = saludRival - (super.getAtaque() * 2)/defensaRival; //Funcionamiento del ataque
-        }
-        else
-        {
-            System.out.println("Fallo");
-        }
-        return daño;
+    public void superAtaque()
+    {
+        System.out.println("Computadora: SUPER ATAQUE");
+        super.setAtaque(super.getAtaque()+10);
     }
     public void aumentoPrecision(){
-        System.out.println("Ahora no fallare mas");
+        System.out.println("Computadora: Ahora no fallare mas");
         super.setPrecision(super.getPrecision()+10);
+    }
+     @Override
+    public void ganador() {
+        System.out.println("Computadora: La era de los robots invadirá el mundo... victoria!");
     }
 }

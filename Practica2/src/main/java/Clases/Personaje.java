@@ -4,9 +4,8 @@ package Clases;
  *
  * @author Leonidas Adrian Mendoza Flores
  */
-import java.util.Random; //Metodo Random
 
-public class Personaje {
+public abstract class Personaje {
     
     public Personaje(String name, int salud, int defensa, int ataque, double precision)
     {
@@ -15,10 +14,15 @@ public class Personaje {
         this.ataque = ataque;
         this.defensa = defensa;
         this.precision = precision;
+        
     }
     public void setNombre(String name) //Asignar nombre
     {
         this.nombre = name;
+    }
+    public String getNombre()
+    {
+        return this.nombre;
     }
     public void setSalud(int hp) //Asignar salud
     {
@@ -52,34 +56,45 @@ public class Personaje {
     {
         return precision;
     }
-    public int atacar(int saludRival, int defensaRival) //Metodo atacar, necesita la defensa y vida del rival
+    
+    public abstract void ganador();
+    
+    public void atacado(int _ataque)
     {
-        Random r = new Random(); //Utiliza el metodo random
-        double acierto = 1 + (99 + 1) * r.nextDouble(); //Obtener un numero aleatorio para el funcionamiento de la taza de acierto
-        int daño = 0; //Variable que devuelve el metodo para el funcionamiento de la defensa
-        if(this.precision > acierto)
+        int vidaRestante=this.getSalud();
+        int daño = _ataque-this.getDefensa();
+        if(daño>0)
         {
-            daño = saludRival - this.ataque/defensaRival; //Funcionamiento del ataque
+            vidaRestante-=daño;
+            System.out.println(this.getNombre() + " ha recibido un "+tipoAtaque+"... Ha perdido "+daño+" vida");
+            
+        }else{
+            System.out.println(this.getNombre()+" se ha librado de un "+tipoAtaque+"... Se prepara para atacar");
         }
-        else
-        {
-            System.out.println("Fallo");
-        }
-        return daño;
+        if(vidaRestante<0) vidaRestante=0;
+        this.setSalud(vidaRestante);
+        System.out.println("La vida de "+ this.getNombre()+" es de " +this.salud);
     }
-    public void recibeDaño(int daño) //Metodo para controlar la vida del personaje y recibir ataques, necesita el metodo "atacar"
+    
+    public void evitar()
     {
-        this.salud -= daño;
-        if(this.salud < 0)
-        {
-            System.out.println(this.nombre +" fue derrotado"); //Envia mensaje si el personaje fue derrotado
-            this.salud = 0;
-        }
+        System.out.println(this.getNombre()+ " evito el golpe con exito!");
+    }
+    
+    public boolean vive()
+    {
+        boolean flag = true;
+        
+        if(this.getSalud()<=0) flag = false;
+        
+        return flag;
     }
     private String nombre; //Atributo nombre del personaje
     private int ataque; //Atributo ataque del personaje
     private int salud; //Atributo salud del personaje
     private int defensa; //Atributo defensa del personaje
     private double precision; //Atributo tasa de aciertos del personaje
+    
+    private String tipoAtaque="golpe";
     
 }
