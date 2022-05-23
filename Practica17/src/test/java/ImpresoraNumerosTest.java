@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @author Leoni
+ * @author Leonidas Adrian Mendoza Flores
  */
 public class ImpresoraNumerosTest {
     
